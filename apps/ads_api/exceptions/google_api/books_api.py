@@ -1,0 +1,2 @@
+class NoBookInfoRetrieved(Exception):
+    pass

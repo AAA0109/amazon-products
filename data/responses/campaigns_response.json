@@ -1,0 +1,24 @@
+{
+    "campaigns": [
+        {
+            "budget": {"budget": 5.0, "budgetType": "DAILY"},
+            "campaignId": "89529493624330",
+            "dynamicBidding": {"placementBidding": [], "strategy": "LEGACY_FOR_SALES"},
+            "endDate": "2019-02-21",
+            "extendedData": {
+                "creationDateTime": "2019-02-15T05:35:06Z",
+                "lastUpdateDateTime": "2020-05-19T08:39:35Z",
+                "servingStatus": "CAMPAIGN_ARCHIVED",
+                "servingStatusDetails": [
+                    {"name": "CAMPAIGN_ARCHIVED_DETAIL"},
+                    {"name": "ENDED_DETAIL"}
+                ]
+            },
+            "name": "The Friendly Butterfly",
+            "startDate": "2019-02-14",
+            "state": "ARCHIVED",
+            "targetingType": "AUTO"
+        }
+    ],
+    "totalResults": 1
+}

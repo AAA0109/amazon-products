@@ -1,0 +1,24 @@
+{
+    "productAds": [
+        {
+            "adGroupId": "104958862747482",
+            "adId": "113434728140115",
+            "asin": "B07NPGJJ2G",
+            "campaignId": "89529493624330",
+            "customText": "Would you like your child to learn about sharing, helping others and keeping a positive attitude? The Friendly Butterfly is the book for you!",
+            "extendedData": {
+                "creationDateTime": "2019-02-15T05:35:06Z",
+                "lastUpdateDateTime": "2020-05-19T08:40:20Z",
+                "servingStatus": "CAMPAIGN_ARCHIVED",
+                "servingStatusDetails": [
+                    {"name": "CAMPAIGN_ARCHIVED_DETAIL"},
+                    {"name": "AD_GROUP_ARCHIVED_DETAIL"},
+                    {"name": "ENDED_DETAIL"},
+                    {"name": "AD_ARCHIVED_DETAIL"}
+                ]
+            },
+            "state": "ARCHIVED"
+        }
+    ],
+    "totalResults": 1
+}

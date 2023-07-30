@@ -1,0 +1,104 @@
+version: "3.8"
+services:
+  db:
+    image: postgres
+    # This lets us expose the database for e.g. host access via pgAdmin 4
+    ports:
+      - "5432:5432"
+    # persist data beyond lifetime of container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.prod
+    restart: always
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    # persistent storage
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    restart: always
+  web:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    command: sh -c "python manage.py migrate &&
+                    gunicorn adsdroid.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - staticfiles:/code/staticfiles
+      - mediafiles:/code/mediafiles
+      - logs:/code/logs
+    expose:
+      - "8000"
+      - "443"
+    env_file:
+      - ./.env.prod
+    depends_on:
+      db:
+        condition: service_started
+      redis:
+        condition: service_started
+    restart: always
+  celery:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    command: celery -A adsdroid worker -l INFO
+    volumes:
+      - logs:/code/logs
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - db
+      - redis
+    restart: always
+  celery-beat:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    command: celery -A adsdroid beat -l INFO
+    volumes:
+      - logs:/code/logs
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - db
+      - redis
+    restart: always
+  flower:
+    image: mher/flower
+    command: celery flower --basic_auth=adsduser:pAV5LS6NlW
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - FLOWER_PORT=8888
+    ports:
+      - "8888:8888"
+    volumes:
+      - flower_data:/flower_data
+    depends_on:
+      - redis
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - web
+    volumes:
+      - staticfiles:/code/staticfiles
+      - mediafiles:/code/mediafiles
+      - letsencrypt:/etc/letsencrypt
+    restart: always
+
+volumes:
+  postgres_data:
+  redis_data:
+  staticfiles:
+  mediafiles:
+  logs:
+  flower_data:
+  letsencrypt:

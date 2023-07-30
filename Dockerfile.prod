@@ -1,0 +1,36 @@
+FROM python:3.11.0-alpine
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH "${PYTHONPATH}:/code"
+ENV PROJECT_DIR=/code
+ENV LOG_DIR=logs
+
+# create the app user
+RUN addgroup -S adsdgroup && adduser -S adsduser -G adsdgroup
+
+# install psycopg2/cryptography dependencies
+RUN apk update
+RUN apk add postgresql-dev gcc python3-dev musl-dev libffi-dev
+
+RUN mkdir $PROJECT_DIR
+RUN mkdir $PROJECT_DIR/staticfiles
+RUN mkdir $PROJECT_DIR/mediafiles
+RUN mkdir $PROJECT_DIR/$LOG_DIR
+WORKDIR $PROJECT_DIR
+
+COPY requirements requirements/
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+COPY . /code/
+
+# chown all the files to the app user
+RUN chown -R adsduser:adsdgroup $PROJECT_DIR
+
+# change to the adsd user
+USER adsduser
+
+# why this has to be here:
+# https://stackoverflow.com/questions/59719175/where-to-run-collectstatic-when-deploying-django-app-to-heroku-using-docker
+RUN python manage.py collectstatic --noinput --settings=adsdroid.settings
+
+EXPOSE 8000

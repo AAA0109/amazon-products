@@ -1,0 +1,90 @@
+{% extends "pegasus/examples/examples_base.html" %}
+{% load static %}
+{% block page_head %}
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+    <style>
+    /* make an editable grid that looks like a table: https://stackoverflow.com/a/15600151/8207 */
+    div.table
+    {
+        display:table;
+    }
+    form.tr, div.tr
+    {
+        display:table-row;
+    }
+    div.td, span.td, div.th, span.th
+    {
+        display:table-cell;
+    }
+    </style>
+{% endblock page_head %}
+{% block app %}
+    <section class="app-card">
+        <div class="pg-columns">
+            <div class="pg-column-one-quarter pg-text-centered">
+                <img class="img-fluid"
+                     alt="HTMX"
+                     src="{% static 'images/adsdroid/Ads_Droid_Logo_Letters.png' %}"
+                     style="max-height: 160px;"/>
+            </div>
+            <div class="pg-column">
+                <h1 class="pg-title">Relevancy list</h1>
+                <h2 class="pg-subtitle">Testing out editing related model.</h2>
+                <div class="content">
+                    <p>This is a model table with some text.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="app-card">
+        <button class="btn btn-icon btn-3 btn-primary"
+                type="button"
+                hx-target="#tbody"
+                hx-swap="outerHTML"
+                hx-trigger="click"
+                hx-post="{% url 'pegasus_employees:set_relevant_table' "show_all" %}">
+            <span class="btn-inner--icon"><i class="material-icons">play_arrow</i></span>
+            <span class="btn-inner--text">Show all</span>
+        </button>
+        <button class="btn btn-icon btn-3 btn-primary"
+                type="button"
+                hx-target="#tbody"
+                hx-swap="outerHTML"
+                hx-trigger="click"
+                hx-post="{% url 'pegasus_employees:set_relevant_table' "show_to_check" %}">
+            <span class="btn-inner--icon"><i class="material-icons">play_arrow</i></span>
+            <span class="btn-inner--text">To check</span>
+        </button>
+    </section>
+    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+            <h6 class="text-white text-capitalize ps-3">Relevancy table</h6>
+        </div>
+    </div>
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table align-items-center mb-0">
+                <thead>
+                    <tr>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Source</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">New Release</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ASIN</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Relevant</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Checked</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Targeting</th>
+                    </tr>
+                </thead>
+                {% include 'pegasus/employees/related_table_loop.html' %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block page_js %}
+    <script>
+  // hook up csrf tokens to all htmx requests
+  document.body.addEventListener('htmx:configRequest', (event) => {
+    event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+  })
+  
+    </script>
+{% endblock %}

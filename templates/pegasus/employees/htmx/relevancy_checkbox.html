@@ -1,0 +1,14 @@
+{% if checkbox == "True" %}
+    <input type="checkbox"
+           checked="checked"
+           hx-post="{% url 'pegasus_employees:set_relevant' rel_id=relevant.id relevant_bool='False' %}"
+           hx-trigger="click"
+           hx-swap="outerHTML"
+           hx-target="this">
+{% else %}
+    <input type="checkbox"
+           hx-post="{% url 'pegasus_employees:set_relevant' rel_id=relevant.id relevant_bool='True' %}"
+           hx-trigger="click"
+           hx-swap="outerHTML"
+           hx-target="this">
+{% endif %}

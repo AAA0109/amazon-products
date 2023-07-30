@@ -1,0 +1,48 @@
+<tr>
+    <td>
+        <p class="text-xs font-weight-bold mb-0">{{ relevant.book }}</p>
+    </td>
+    <td>
+        <div class="d-flex px-2 py-1">
+            <div>
+                <img src={{ relevant.new_release.image_url }} class="avatar avatar-sm me-3">
+            </div>
+            <div class="d-flex flex-column justify-content-center">
+                <h6 class="mb-0 text-xs">{{ relevant.new_release.title }}</h6>
+            </div>
+        </div>
+    </td>
+    <td>
+        <p class="text-xs font-weight-bold mb-0">{{ relevant.new_release }}</p>
+    </td>
+    <td class="align-middle text-center">
+        {% if relevant.relevant %}
+            <input type="checkbox"
+                   checked="checked"
+                   hx-post="{% url 'pegasus_employees:set_relevant' relevant.id "False" %}"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="this">
+        {% else %}
+            <input type="checkbox"
+                   hx-post="{% url 'pegasus_employees:set_relevant' relevant.id "True" %}"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="this">
+        {% endif %}
+    </td>
+    <td class="align-middle text-center">
+        {% if relevant.checked %}
+            <input type="checkbox" checked="checked">
+        {% else %}
+            <input type="checkbox">
+        {% endif %}
+    </td>
+    <td class="align-middle text-center">
+        {% if relevant.targeting %}
+            <input type="checkbox" checked="checked">
+        {% else %}
+            <input type="checkbox">
+        {% endif %}
+    </td>
+</tr>

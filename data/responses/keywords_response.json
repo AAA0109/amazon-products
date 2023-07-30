@@ -1,0 +1,24 @@
+{
+    "keywords": [
+        {
+            "adGroupId": "1116959e21370298",
+            "campaignId": "150355030985573",
+            "extendedData": {
+                "creationDateTime": "2019-12-23T22:07:38Z",
+                "lastUpdateDateTime": "2020-05-19T08:40:20Z",
+                "servingStatus": "CAMPAIGN_ARCHIVED",
+                "servingStatusDetails": [
+                    {"name": "CAMPAIGN_ARCHIVED_DETAIL"},
+                    {"name": "AD_GROUP_ARCHIVED_DETAIL"},
+                    {"name": "TARGETING_CLAUSE_ARCHIVED_DETAIL"}
+                ]
+            },
+            "keywordId": "190641238324512",
+            "keywordText": "mbti",
+            "matchType": "EXACT",
+            "state": "ARCHIVED"
+        }
+    ],
+    "nextToken": "AYADeAdvbuoLSqbL5rTlDCXq/aAAiQACAAdTZXJ2aWNlAB9BZHZlcnRpc2luZ0FQSVNwb25zb3JlZFByb2R1Y3RzABVhd3MtY3J5cHRvLXB1YmxpYy1rZXkAREFtMmtBZ25sbjl2YnlZN05PMmsvb0FXS3ZzVnZLbnJSUmhVcXRqWVR4UGtLWW0ybHluaFlJUFZaZEg5VUsvTUkwdz09AAEAB2F3cy1rbXMAS2Fybjphd3M6a21zOnVzLWVhc3QtMTozNTAzODQxMjk3NTE6a2V5LzEwZDk3MDdjLTIzMWQtNGU5Ny1iZWMwLTNlMmE0OTA2MTlhMQC4AQIBAHjN43nptG/ytdpFLmi6iDS2ViQd86xSeHJniRKclZMM6QES/tMfXaaaoXur0SuT2W5BAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMFiyJhN44Zz2bxCAoAgEQgDtUn56jn+3KtK2hv4GNFZK9TYDEOU3M1pF6aVSK/Lu6s/jZikZszvJVkBUBzSia3lDvkQfRc06pLEjewAIAAAAADAAAEAAAAAAAAAAAAAAAAAB0mpVzNMMXSQhbavEEJD1J/////wAAAAEAAAAAAAAAAAAAAAEAAAC00lJwtGCzpzKT16cdR/ZmXptKhs0K3rrgkPAaliYPtHeOV95f8ublkkIKDQltdCBbvMMhJ0kK90XCm9MHdzIrqHFbp9QqKiCf4zXrvZ+x3jJVId9XjL3Nbg1nzvw3xQW4GOkQpTQVSQS2vA/W2vvmMN20xA1gWQRL4Yo/Bk6SOCVd91750fgf/f+sRLMO3k5Lc/FOcuz132/RJy4dPvnZrlo2AiM7et2qwSnyC/wxQa/prEOks3uI7KEM3LwP8VoyG4O0EABnMGUCMHyUyzgEaqkx1QOME+y6OYLfqKJ1qx7nwDZ/vFngJhfgBB7Q9Wkoji92EeGPeZ5v9wIxANVkbltZWA/eTGwg7xHNxd5bV+b6eUBhBtJgdwB48nMGxVomXrmU6wpg1jRfQehlQA==",
+    "totalResults": 1
+}

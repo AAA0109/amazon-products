@@ -1,0 +1,2 @@
+class InvalidAsin(Exception):
+    pass

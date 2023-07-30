@@ -1,0 +1,20 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
+    - plan: heroku-redis
+      as: REDIS
+  config:
+    DJANGO_SETTINGS_MODULE: adsdroid.settings_heroku
+build:
+  docker:
+    django: Dockerfile.web
+run:
+  web:
+    command:
+      - gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 adsdroid.wsgi:application
+    image: django
+  worker:
+    command:
+      - celery -A adsdroid worker -l INFO
+    image: django

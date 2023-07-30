@@ -1,0 +1,25 @@
+{
+    "nextToken": "AYADeI+WY9+cyAAjuBAvn/rX/6EAiQACAAdTZXJ2aWNlAB9BZHZlcnRpc2luZ0FQSVNwb25zb3JlZFByb2R1Y3RzABVhd3MtY3J5cHRvLXB1YmxpYy1rZXkAREF0SXJCNzZoYVpka0w1MnhHV0FUdjVvNmNuMGV5aDhOWkRuNE1rQXhmNUNGNld0M3J4VDFvc0t5cFhBWS9ZaDR3UT09AAEAB2F3cy1rbXMAS2Fybjphd3M6a21zOnVzLWVhc3QtMTozNTAzODQxMjk3NTE6a2V5LzEwZDk3MDdjLTIzMWQtNGU5Ny1iZWMwLTNlMmE0OTA2MTlhMQC4AQIBAHjN43nptG/ytdpFLmi6iDS2ViQd86xSeHJniRKclZMM6QF6Ll8mjlQfqKcAbWCffvKDAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMQ2RsmKlIvBp6f1ZYAgEQgDtlMy/2n9Caut2HZ6k82aByhC0JpFKa1udHok1iSIgT7vXC519q3JrD5AY8ODy0wd0ee44QhusJPBlKkgIAAAAADAAAEAAAAAAAAAAAAAAAAABumnPOyudVfkrxsFsrnsGX/////wAAAAEAAAAAAAAAAAAAAAEAAAC0sNYot8yKliO3B/Z/GEQ+XxM66ehiQUlIdujYBRE9aEXAF0RXAdWijrcVyLVUosYrC4PX/J5feKm04ciOvlv4XPwpuqqPg0G6zieyAuelB9cd5sDQR4/zYJ5CKklJFwQa84Xt8y3XJzebfWQUnQvajWwUzARV3uP0eJ6AvuIH/593S+gBLHY4HOuzFTApzkzR4PkCjLnghZn6hzvPdKherM5jojk2UslRe8ieyG7iBeGeAXUGZ9Mix30nTrrllwaeRln/3wBnMGUCMQDTXZvx6DQ79KVANezIHdMrkIEGayusmZrnwMyCbRl7mFALnjsJykj2Jwwsk/fuepoCMDV0kH4PnGGsfGsCZ+KUWb43PqUSsuNsth5fmetT+YMpQLNc5hf4JNF3iqrqWq0bMg==",
+    "targetingClauses": [
+        {
+            "adGroupId": "254954903073254",
+            "bid": 0.3,
+            "campaignId": "50089382605661",
+            "expression": [{"type": "ASIN_SAME_AS", "value": "B07Y8HLS8T"}],
+            "expressionType": "MANUAL",
+            "extendedData": {
+                "creationDateTime": "2020-06-22T11:21:00Z",
+                "lastUpdateDateTime": "2020-06-22T11:27:28Z",
+                "servingStatus": "CAMPAIGN_PAUSED",
+                "servingStatusDetails": [
+                    {"name": "TARGETING_CLAUSE_ARCHIVED_DETAIL"},
+                    {"name": "CAMPAIGN_PAUSED_DETAIL"}
+                ]
+            },
+            "resolvedExpression": [{"type": "ASIN_SAME_AS", "value": "B07Y8HLS8T"}],
+            "state": "ARCHIVED",
+            "targetId": "10433041170409"
+        }
+    ],
+    "totalResults": 1
+}

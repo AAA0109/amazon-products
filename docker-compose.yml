@@ -1,0 +1,75 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    # This lets us expose the database for e.g. host access via pgAdmin 4
+    ports:
+      - "5432:5432"
+    # persist data beyond lifetime of container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=adsdroid
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    # persistent storage
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+  web:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: sh -c "python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+      - logs:/code/logs
+    ports:
+      - "8000:8000"
+      - "4444:4444" # This is the debugger port
+    env_file:
+      - ./.env.dev
+    depends_on:
+      db:
+        condition: service_started
+      redis:
+        condition: service_started
+  celery:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: celery -A adsdroid worker -l INFO
+    volumes:
+      - .:/code
+      - logs:/code/logs
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+      - redis
+  flower:
+    image: mher/flower
+    command: celery flower --basic_auth=adsduser:123223123
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - FLOWER_PORT=8888
+    ports:
+      - "8888:8888"
+    volumes:
+      - flower_data:/flower_data
+    depends_on:
+      - redis
+
+volumes:
+  postgres_data: null
+  redis_data: null
+  logs:
+  flower_data:

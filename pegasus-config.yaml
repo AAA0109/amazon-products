@@ -1,0 +1,24 @@
+default_context:
+  _pegasus_version: 2022.4.2
+  author_name: Ivan
+  ci: github_actions
+  css_framework: bootstrap
+  css_theme: bootstrap-material
+  database: postgres
+  deploy_platform: heroku_docker
+  description: Amazon Advertising Management for Publishers and Authors
+  domain_name: localhost:8000
+  email: ivan@adsdroid.com
+  enable_google_login: y
+  enable_twitter_login: n
+  front_end_framework: htmx
+  project_name: AdsDroid
+  project_slug: adsdroid
+  stripe_payment_mode: checkout
+  subscription_billing_model: default
+  use_api_keys: y
+  use_docker: y
+  use_impersonation: y
+  use_sentry: n
+  use_subscriptions: n
+  use_teams: n

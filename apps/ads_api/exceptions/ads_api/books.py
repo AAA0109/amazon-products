@@ -1,0 +1,2 @@
+class NoBookCatalogRetrieved(Exception):
+    pass

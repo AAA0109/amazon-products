@@ -1,0 +1,13 @@
+<div id="response-div">
+    <div class="table pg-table">
+        <div class="tr">
+            <div class="th pg-text-left">Nickname</div>
+            <div class="th pg-text-left">Country</div>
+            <div class="th pg-text-left">Entity ID</div>
+            <div class="th pg-text-left">Managed</div>
+        </div>
+            {% for profile in profiles %}
+                {% include 'pegasus/employees/htmx/profile_row.html' %}
+            {% endfor %}
+    </div>
+</div>

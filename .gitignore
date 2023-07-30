@@ -1,0 +1,32 @@
+.idea
+*.pyc
+*~
+logs/
+db.sqlite3
+.sass-cache/
+adsdroid/localsettings.py
+adsdroid/local.py
+adsdroid/settings_docker.py 
+static_root/
+node_modules/
+media/
+docs/_build
+_dist/
+.env.dev
+.env.production
+.env.prod
+.DS_Store
+apps/ads_api/token.json
+example_responses/
+celerybeat-schedule
+.devcontainer/
+cookies.txt
+*credentials*.json
+staticfiles/
+mediafiles/
+# uncomment these lines after setting up the front-end build pipeline in dev and production
+# static/css/
+# static/js/
+/.coverage
+requests.http
+.vscode

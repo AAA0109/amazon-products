@@ -1,0 +1,14 @@
+{% extends "web/app/app_base.html" %}
+{% load hijack %}
+{% load form_tags %}
+{% block app %}
+    <section class="app-card">
+        <h3 class="title">Logs</h3>
+        <p class="lead">
+            {% for line in logs %}
+                {{ line }} </br>
+            {% endfor %}
+        </p>
+
+    </section>
+{% endblock %}

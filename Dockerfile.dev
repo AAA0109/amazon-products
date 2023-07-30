@@ -1,0 +1,17 @@
+FROM python:3.11.0-alpine
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH "${PYTHONPATH}:/code"
+ENV PROJECT_DIR=/code
+ENV SHELL /bin/sh
+
+# install psycopg2/cryptography dependencies
+RUN apk update
+RUN apk add postgresql-dev gcc python3-dev musl-dev libffi-dev git
+
+RUN mkdir $PROJECT_DIR
+WORKDIR $PROJECT_DIR
+
+COPY requirements requirements/
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+COPY . /code/
